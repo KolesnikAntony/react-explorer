@@ -31,14 +31,15 @@ const Creator: FC<CreatorPropsT> = ({handleCancelCreate, handleAddItem, creator}
         handleCancelCreate();
     }, [id, type, value, handleAddItem, handleCancelCreate]);
 
+
     return (
-        <form className="creator">
+        <form className="creator" onSubmit={onCreate}>
             <h5 className="creator__title">Create new {creator.type}</h5>
             <div className="creator__actions">
-                <input onChange={handleSetValue} value={value} className="creator__input" type="text"
+                <input autoFocus onChange={handleSetValue} value={value} className="creator__input" type="text"
                        placeholder="File name"/>
-                <ButtonIcon icon={iconRemove} onClick={handleCancelCreate}/>
-                <ButtonIcon icon={iconAdd} onClick={onCreate}/>
+                <ButtonIcon type="button" icon={iconRemove} onClick={handleCancelCreate}/>
+                <ButtonIcon type="submit" icon={iconAdd}/>
             </div>
         </form>
     );

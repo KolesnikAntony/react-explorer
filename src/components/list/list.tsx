@@ -15,6 +15,7 @@ const List = () => {
     const dndHandlers = useDnd(handleMove);
     const folders = useMemo(() => tree ? Object.values(tree) : null, [tree]);
     const {creator, handleOpenCreator, handleCancelCreate} = useCreator();
+
     return (
         <aside className="sidebar">
             {creator.isOpen &&

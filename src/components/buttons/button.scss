@@ -5,6 +5,10 @@
     background-color: transparent;
     transition: 0.3s;
     cursor: pointer;
+    &:active, &:hover, &:focus {
+        border: none;
+        outline: none;
+    }
     &__img {
         width: 16px;
         height: 16px;
