@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+//COMPONENTS
+import List from "./components/list/list";
+//STYLES
 import './App.css';
+import Content from "./components/content/content";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <>
+            <header className="header">
+                <h1 className="header__title">Explorer react app</h1>
+            </header>
+            <main className="main">
+                <List/>
+                <Content/>
+            </main>
+            <footer className="footer">
+                <h2 className="footer__title">Some info</h2>
+            </footer>
+        </>
+    );
 }
 
 export default App;

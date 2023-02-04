@@ -1,0 +1,32 @@
+.creator {
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #212121;
+  z-index: 10;
+
+  &__title {
+    padding: 8px;
+    text-align: center;
+    color: white;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__input {
+    border: none;
+    padding: 4px 12px;
+    margin-right: auto;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+}

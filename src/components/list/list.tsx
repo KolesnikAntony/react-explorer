@@ -1,40 +1,32 @@
-import React, {useState} from 'react';
-import {FolderI} from "../../interfaces/folder";
-import Folder from "../folder/folder";
+import React, {useMemo} from 'react';
+//HOOKS
+import {useTree} from "../../hooks/useTree";
+import {useDnd} from "../../hooks/useDnd";
+import {useCreator} from "../../hooks/useCreator";
+//COMPONENTS
+import Folder from "../items/folder";
+import Creator from "../creator/creator";
+//STYLES
+import "./list.scss"
 
-const FolderList = () => {
-    const [folders, setFolders] = useState<FolderI[]>([{
-        name: "root",
-        type: "folder",
-        items: [
-            {
-                name: "Child Folder",
-                type: "folder",
-                items: [
-                    {
-                        name: "style.css",
-                        type: 'file',
-                    },
-                    {
-                        name: "bootstrap.css",
-                        type: 'file',
-                    }
-                ]},
-            {
-                name: "index.html",
-                type: 'file',
-            },
-            {
-                name: "background.html",
-                type: 'file',
-            }
-        ]
-    }]);
 
+const List = () => {
+    const {tree, handleMove, handleAdd, handleRemove} = useTree();
+    const dndHandlers = useDnd(handleMove);
+    const folders = useMemo(() => tree ? Object.values(tree) : null, [tree]);
+    const {creator, handleOpenCreator, handleCancelCreate} = useCreator();
     return (
-        <ul className="folder__list">
-            {folders.map((folder) => <Folder key={folder.name} folder={folder}/>)}
-        </ul>
+        <aside className="sidebar">
+            {creator.isOpen &&
+                <Creator handleAddItem={handleAdd} creator={creator} handleCancelCreate={handleCancelCreate}/>}
+            <ul className="list">
+                {!!folders?.length && folders.map((folder) => <Folder key={folder.key} folder={folder}
+                                                                      handleOpenCreator={handleOpenCreator}
+                                                                      dndHandlers={dndHandlers}
+                                                                      handleRemove={handleRemove}
+                />)}
+            </ul>
+        </aside>
     );
 };
-export default FolderList;
+export default List;

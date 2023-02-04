@@ -1,0 +1,71 @@
+.item {
+  border-radius: 4px;
+
+  &--folder.drag-over > .item__title {
+    box-shadow: 0 0 6px 1px #eee9e9;
+  }
+
+  &__title:hover {
+    & > .item__name {
+      opacity: 0.6;
+    }
+
+    & > .item__actions {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+
+  &__title {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    gap: 8px;
+    transition: 0.3s ease-in-out;
+  }
+
+  &__icon {
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    transition: 0.3s;
+
+    &--folder {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    &--dnd {
+      cursor: grab;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 16px;
+    color: white;
+    font-weight: 400;
+    transition: 0.3s;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: auto;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s;
+  }
+}
